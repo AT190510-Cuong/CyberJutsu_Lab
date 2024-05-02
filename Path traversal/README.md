@@ -372,13 +372,23 @@ tương tự bài trước mình có thể thực hiện khai thác lỗ hổng 
 
 - và mình lấy được flag
 
+- nhưng mục đích của chúng ta là RCE
 - bài không có chức năng upload để mình có thể upload webshell để RCE
 
-- mình thấy có 2 file `/var/log/apache2/access.log /var/log/apache2/error.log` mình có toàn quyền đọc ghi và thực thi
+- mình thấy có 2 file `/var/log/apache2/access.log /var/log/apache2/error.log` mình có toàn quyền đọc, ghi và thực thi
 
 ![image](https://hackmd.io/_uploads/BksP86xMA.png)
 
 ![image](https://hackmd.io/_uploads/ByTQSTlfC.png)
+
+![image](https://hackmd.io/_uploads/H1QZVeWMR.png)
+
+- 2 file `/var/log/apache2/access.log /var/log/apache2/error.log` mình có quyền ghi vào và nó hiện log của các request của user gửi đến gồm có thông tin của trường **User-Agent** và trường này mình có thể thay đổi được
+- mình đã chèn vào trường này đoạn script php và nó sẽ được include vào trang php chính và chạy đoạn code php này
+
+![image](https://hackmd.io/_uploads/rkasVeZf0.png)
+
+- và đoạn code php này đã được thực hiện vậy mình có thể RCE đến hệ thống website như <a href="https://hackmd.io/@monstercuong7/B1WSanCp6">bài này</a> mình đã làm
 
 ## Level 6
 
